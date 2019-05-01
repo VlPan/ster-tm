@@ -1,11 +1,11 @@
 import { LoadActivitiesSuccess,
    LoadActivitiesFailed, AddActivity,
-   ADD_ACTIVITY, AddActivitySuccess, AddActivityFailed } from './../actions/activities.actions';
+   ADD_ACTIVITY, AddActivitySuccess, AddActivityFailed, PAGE_DESTROYED } from './../actions/activities.actions';
 import { ActivityService } from './../../services/activity.service';
 import { Injectable } from '@angular/core';
 
 import { Effect, Actions, ofType } from '@ngrx/effects';
-import { map, switchMap, catchError, filter } from 'rxjs/operators';
+import { map, switchMap, catchError, filter, takeUntil } from 'rxjs/operators';
 import { LOAD_ACTIVITIES } from '../actions/activities.actions';
 import { of } from 'rxjs';
 import { DocumentChangeAction } from '@angular/fire/firestore';
@@ -24,6 +24,9 @@ export class ActivitiesEffects {
       return this.activityService
         .getActivities()
         .pipe(
+          takeUntil(
+            this.actions$.pipe(ofType(PAGE_DESTROYED))
+          ),
           map((activities: DocumentChangeAction<{}>[]) => {
             const mapped = activities.map(a => ({id: a.payload.doc.id, ...a.payload.doc.data()}));
             return new LoadActivitiesSuccess(mapped as any);
