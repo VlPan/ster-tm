@@ -18,4 +18,9 @@
   </li>
 </ul>
 
+<div *ngFor="let activity of (activities$ | async)">
+  {{ activity.id }}
+</div>
+
+
 <router-outlet></router-outlet>

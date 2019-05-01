@@ -1,0 +1,25 @@
+import { Activity, ActivitiesState } from './../models/activity.model';
+import { createSelector } from '@ngrx/store';
+import { getActivitiesState } from '../reducers';
+
+
+export const getPizzaState = createSelector(
+  getActivitiesState,
+  (state: ActivitiesState) => state.activities
+);
+
+export const getActivities = createSelector(
+  getActivitiesState,
+  (state: ActivitiesState) => state.activities
+);
+
+
+export const getActivitiesLoadStatus = createSelector(
+  getActivitiesState,
+  (state: ActivitiesState) => state.loadActivitiesStatus
+);
+
+export const getActivitiesAddStatus = createSelector(
+  getActivitiesState,
+  (state: ActivitiesState) => state.addActivityStatus
+);
