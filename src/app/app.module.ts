@@ -14,7 +14,7 @@ import {EffectsModule} from '@ngrx/effects';
 import {StoreModule} from '@ngrx/store';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import { ActivityService } from './services/activity.service';
-import { activtiesReducer } from './store/reducers/activities.reducer';
+import { reducers } from './store/reducers';
 
 
 @NgModule({
@@ -26,9 +26,7 @@ import { activtiesReducer } from './store/reducers/activities.reducer';
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     EffectsModule.forRoot([ActivitiesEffects]),
-    StoreModule.forRoot({
-      activities: activtiesReducer
-    }),
+    StoreModule.forRoot(reducers),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     AngularFirestoreModule,
     AngularFireAuthModule,
