@@ -19,7 +19,7 @@
 </ul>
 
 <div *ngFor="let activity of (activities$ | async)">
-  {{ activity.id }}
+  {{ activity.id }} <button (click)="deleteActivity(activity.id)">delete</button>
 </div>
 
 

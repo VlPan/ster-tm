@@ -1,4 +1,4 @@
-import { LoadActivitiesStatus, AddActivityStatus } from './../models/activity.model';
+import { LoadActivitiesStatus, AddActivityStatus, DeleteActivityStatus } from './../models/activity.model';
 import {
   LOAD_ACTIVITIES,
   LOAD_ACTIVITIES_SUCCESS,
@@ -6,7 +6,10 @@ import {
   ADD_ACTIVITY,
   ADD_ACTIVITY_SUCCESS,
   ADD_ACTIVITY_FAILED,
-  ActivitiesAction
+  ActivitiesAction,
+  DELETE_ACTIVITY,
+  DELETE_ACTIVITY_SUCCESS,
+  DELETE_ACTIVITY_FAILED
 } from './../actions/activities.actions';
 import {
   Activity,
@@ -18,6 +21,7 @@ export const initialState: ActivitiesState = {
   activities: [],
   addActivityStatus: AddActivityStatus.INIT,
   loadActivitiesStatus: LoadActivitiesStatus.INIT,
+  deleteActivityStatus: DeleteActivityStatus.INIT,
 };
 
 
@@ -60,6 +64,26 @@ export function activtiesReducer(state: ActivitiesState = initialState, action: 
         ...state,
         loadActivitiesStatus: LoadActivitiesStatus.FAILED
       };
+
+      case DELETE_ACTIVITY:
+      return {
+        ...state,
+        deleteActivityStatus: DeleteActivityStatus.PROGRESS
+      };
+
+    case DELETE_ACTIVITY_SUCCESS:
+    console.log(state);
+      return {
+        ...state,
+        deleteActivityStatus: DeleteActivityStatus.SUCCESS
+      };
+
+    case DELETE_ACTIVITY_FAILED:
+      return {
+        ...state,
+        deleteActivityStatus: DeleteActivityStatus.FAILED
+      };
+
 
     default:
       return state;

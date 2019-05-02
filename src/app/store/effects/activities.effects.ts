@@ -1,6 +1,6 @@
 import { LoadActivitiesSuccess,
    LoadActivitiesFailed, AddActivity,
-   ADD_ACTIVITY, AddActivitySuccess, AddActivityFailed, PAGE_DESTROYED } from './../actions/activities.actions';
+   ADD_ACTIVITY, AddActivitySuccess, AddActivityFailed, PAGE_DESTROYED, DELETE_ACTIVITY, DeleteActivity, DeleteActivitySuccess, DeleteActivityFailed } from './../actions/activities.actions';
 import { ActivityService } from './../../services/activity.service';
 import { Injectable } from '@angular/core';
 
@@ -50,6 +50,20 @@ export class ActivitiesEffects {
     })
   );
 
+
+  @Effect()
+  removeActivity$ = this.actions$.pipe(ofType(DELETE_ACTIVITY)).pipe(
+    map((action: DeleteActivity) => action.payload),
+    switchMap(activityId => {
+      return this.activityService
+        .deleteActivity(activityId)
+        .pipe(
+          map(() => new DeleteActivitySuccess()),
+          catchError(error => of(new DeleteActivityFailed(error)))
+        );
+    })
+  );
+
 //   @Effect()
 //   createPizzaSuccess$ = this.actions$
 //     .ofType(pizzaActions.CREATE_PIZZA_SUCCESS)
@@ -75,18 +89,6 @@ export class ActivitiesEffects {
 //     })
 //   );
 
-//   @Effect()
-//   removePizza$ = this.actions$.ofType(pizzaActions.REMOVE_PIZZA).pipe(
-//     map((action: pizzaActions.RemovePizza) => action.payload),
-//     switchMap(pizza => {
-//       return this.pizzaService
-//         .removePizza(pizza)
-//         .pipe(
-//           map(() => new pizzaActions.RemovePizzaSuccess(pizza)),
-//           catchError(error => of(new pizzaActions.RemovePizzaFail(error)))
-//         );
-//     })
-//   );
 
 //   @Effect()
 //   handlePizzaSuccess$ = this.actions$
