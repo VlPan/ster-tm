@@ -24,4 +24,9 @@ constructor(private db: AngularFirestore) {}
     console.log(of(this.db.collection('activities').doc(id)));
     return  of(this.db.collection('activities').doc(id).delete());
   }
+
+  updateActivity(paylaod: {id: string, value: Activity}) {
+    const { id, value } = paylaod;
+    return of(this.db.collection('activities').doc(id).set(value));
+  }
 }

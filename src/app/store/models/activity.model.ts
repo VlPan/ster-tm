@@ -29,10 +29,18 @@ export enum DeleteActivityStatus {
   FAILED
 }
 
+export enum UpdateActivityStatus {
+  INIT,
+  PROGRESS,
+  SUCCESS,
+  FAILED
+}
+
 
 export class ActivitiesState {
   activities: Activity[];
   addActivityStatus: AddActivityStatus;
   loadActivitiesStatus: LoadActivitiesStatus;
   deleteActivityStatus: DeleteActivityStatus;
+  updateActivityStatus: UpdateActivityStatus;
 }

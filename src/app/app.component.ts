@@ -1,4 +1,4 @@
-import { LoadActivities, AddActivity, PageDestroyed, DeleteActivity } from './store/actions/activities.actions';
+import { LoadActivities, AddActivity, PageDestroyed, DeleteActivity, UpdateActivity } from './store/actions/activities.actions';
 import { ActivitiesState, Activity } from './store/models/activity.model';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
@@ -18,7 +18,6 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.store.dispatch(new LoadActivities());
-    this.store.dispatch(new AddActivity({title: 'hello world'}));
     this.activities$ = this.store.select(getActivities);
   }
 
@@ -27,8 +26,6 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   public deleteActivity(id: string) {
-    console.log('delete');
     this.store.dispatch(new DeleteActivity(id));
-
   }
 }

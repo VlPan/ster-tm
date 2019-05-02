@@ -46,8 +46,6 @@ export const DELETE_ACTIVITY = '[STER] DELETE ACTIVITY';
 export const DELETE_ACTIVITY_SUCCESS = '[STER] DELETE ACTIVITY SUCCESS';
 export const DELETE_ACTIVITY_FAILED = '[STER] DELETE ACTIVITY FAILED';
 
-
-
 export class DeleteActivity implements Action {
   readonly type = DELETE_ACTIVITY;
   constructor(public payload: string) {}
@@ -61,6 +59,26 @@ export class DeleteActivitySuccess implements Action {
 export class DeleteActivityFailed implements Action {
   readonly type = DELETE_ACTIVITY_FAILED;
   constructor(public payload?: Activity[]) {}
+}
+
+
+export const UPDATE_ACTIVITY = '[STER] UPDATE ACTIVITY';
+export const UPDATE_ACTIVITY_SUCCESS = '[STER] UPDATE ACTIVITY SUCCESS';
+export const UPDATE_ACTIVITY_FAILED = '[STER] UPDATE ACTIVITY FAILED';
+
+export class UpdateActivity implements Action {
+  readonly type = UPDATE_ACTIVITY;
+  constructor(public payload: {id: string, value: Activity}) {}
+}
+
+export class  UpdateActivitySuccess implements Action {
+  readonly type = UPDATE_ACTIVITY_SUCCESS;
+  constructor(public payload?: any) {}
+}
+
+export class UpdateActivityFailed implements Action {
+  readonly type = UPDATE_ACTIVITY_FAILED;
+  constructor(public payload?: any) {}
 }
 
 export const PAGE_DESTROYED = '[STER] PAGE_DESTROYED';
@@ -79,4 +97,7 @@ export type ActivitiesAction =
     | AddActivitySuccess
     | DeleteActivity
     | DeleteActivitySuccess
-    | DeleteActivityFailed;
+    | DeleteActivityFailed
+    | UpdateActivity
+    | UpdateActivitySuccess
+    | UpdateActivityFailed;
