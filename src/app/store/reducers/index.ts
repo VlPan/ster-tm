@@ -1,18 +1,23 @@
 import { ActivitiesState, ActivityHistoryState } from './../models/activity.model';
 import { createFeatureSelector, ActionReducerMap } from '@ngrx/store';
-import { activtiesReducer } from './activities.reducer';
-import { activtiyHistoryReducer } from './activity-history.reducer';
+import { activitiesReducer } from './activities.reducer';
+import { activityHistoryReducer } from './activity-history.reducer';
 
 export interface AppState  {
   activitiesRoot: ActivitiesState;
-  activityHistoryRoot: ActivityHistoryState;
+  activityHistoryRoot?: ActivityHistoryState;
 }
 
 export const reducers: ActionReducerMap<AppState> = {
-  activitiesRoot: activtiesReducer,
-  activityHistoryRoot: activtiyHistoryReducer
+  activitiesRoot: activitiesReducer,
+  activityHistoryRoot: activityHistoryReducer
 };
 
-export const getAppState = createFeatureSelector<AppState>(
-  'appState'
+
+export const getActivitiesState = createFeatureSelector<ActivitiesState>(
+  'activitiesRoot'
+);
+
+export const getActivityHistoryState = createFeatureSelector<ActivityHistoryState>(
+  'activityHistoryRoot'
 );

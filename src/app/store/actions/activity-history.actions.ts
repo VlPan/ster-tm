@@ -1,5 +1,5 @@
 
-import { Activity, ActivityHistory } from '../models/activity.model';
+import { Activity, ActivityHistoryItem } from '../models/activity.model';
 import {Action} from '@ngrx/store';
 
 export const LOAD_ACTIVITY_HISTORY = '[STER] LOAD ACTIVITY HISTORY';
@@ -17,7 +17,7 @@ export class LoadActivityHistoryFailed implements Action {
 
 export class LoadActivityHistorySuccess implements Action {
   readonly type = LOAD_ACTIVITY_HISTORY_SUCCESS;
-  constructor(public payload: ActivityHistory[]) {}
+  constructor(public payload: ActivityHistoryItem[]) {}
 }
 
 
@@ -29,7 +29,7 @@ export const ADD_ACTIVITY_HISTORY_FAILED = '[STER] ADD ACTIVITY FAILED';
 
 export class AddActivityHistory implements Action {
   readonly type = ADD_ACTIVITY_HISTORY;
-  constructor(public payload: Activity) {}
+  constructor(public payload: ActivityHistoryItem) {}
 }
 
 export class AddActivityHistoryFailed implements Action {
@@ -69,7 +69,7 @@ export const UPDATE_ACTIVITY_HISTORY_FAILED = '[STER] UPDATE ACTIVITY FAILED';
 
 export class UpdateActivityHistory implements Action {
   readonly type = UPDATE_ACTIVITY_HISTORY;
-  constructor(public payload: {id: string, value: Activity}) {}
+  constructor(public payload: {id: string, value: ActivityHistoryItem}) {}
 }
 
 export class  UpdateActivityHistorySuccess implements Action {

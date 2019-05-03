@@ -1,8 +1,7 @@
-import { AddActivity, DeleteActivity } from '../store/actions/activities.actions';
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { Activity } from '../store/models/activity.model';
-import { Observable, of } from 'rxjs';
+import { ActivityHistoryItem } from '../store/models/activity.model';
+import {of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,11 +10,11 @@ export class ActivityHistory {
 
 constructor(private db: AngularFirestore) {}
 
-  getHisotry() {
+  getHistory() {
     return this.db.collection('/activityHistory').snapshotChanges();
   }
 
-  addActivityHistory(activityHistory: ActivityHistory) {
+  addActivityHistory(activityHistory: ActivityHistoryItem) {
     return of(this.db.collection('activityHistory').add(activityHistory));
   }
 
@@ -23,7 +22,7 @@ constructor(private db: AngularFirestore) {}
     return  of(this.db.collection('activityHistory').doc(id).delete());
   }
 
-  updateActivityHistory(paylaod: {id: string, value: ActivityHistory}) {
+  updateActivityHistory(paylaod: {id: string, value: ActivityHistoryItem}) {
     const { id, value } = paylaod;
     return of(this.db.collection('activityHistory').doc(id).set(value));
   }

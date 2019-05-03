@@ -36,7 +36,7 @@ export const initialState: ActivityHistoryState = {
 };
 
 
-export function activtiyHistoryReducer(state: ActivityHistoryState = initialState, action: ActivityHistoryAction): ActivityHistoryState {
+export function activityHistoryReducer(state: ActivityHistoryState = initialState, action: ActivityHistoryAction): ActivityHistoryState {
   console.log(action.type);
   switch (action.type) {
     case LOAD_ACTIVITY_HISTORY:

@@ -9,12 +9,17 @@ import { environment } from 'src/environments/environment';
 import { AngularFirestoreModule, AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-
+import { storeFreeze } from 'ngrx-store-freeze';
 import {EffectsModule} from '@ngrx/effects';
-import {StoreModule} from '@ngrx/store';
+import {StoreModule, MetaReducer} from '@ngrx/store';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import { ActivityService } from './services/activity.service';
 import { reducers } from './store/reducers';
+import { effects } from './store/effects';
+
+export const metaReducers: MetaReducer<any>[] = !environment.production
+  ? [storeFreeze]
+  : [];
 
 
 @NgModule({
@@ -25,8 +30,8 @@ import { reducers } from './store/reducers';
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
-    EffectsModule.forRoot([ActivitiesEffects]),
-    StoreModule.forRoot(reducers),
+    EffectsModule.forRoot(effects),
+    StoreModule.forRoot(reducers, { metaReducers }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     AngularFirestoreModule,
     AngularFireAuthModule,

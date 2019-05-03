@@ -14,7 +14,7 @@ export interface STERModel {
   richNess: number;
 }
 
-export interface ActivityHistory {
+export interface ActivityHistoryItem {
   activity: Activity;
   time: number;
   sterOptions?: STERModel;
@@ -89,7 +89,7 @@ export class ActivitiesState {
 }
 
 export class ActivityHistoryState {
-  activityHistory: ActivityHistory[];
+  activityHistory: ActivityHistoryItem[];
   addActivityHistoryStatus: AddActivityHistoryStatus;
   loadActivityHistoryStatus: LoadActivityHistoryStatus;
   deleteActivityHistoryStatus: DeleteActivityHistoryStatus;

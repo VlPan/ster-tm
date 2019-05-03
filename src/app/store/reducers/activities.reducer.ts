@@ -28,8 +28,9 @@ export const initialState: ActivitiesState = {
   updateActivityStatus: UpdateActivityStatus.INIT,
 };
 
+export const getActivitiesRootState = (state: ActivitiesState) => state;
 
-export function activtiesReducer(state: ActivitiesState = initialState, action: ActivitiesAction): ActivitiesState {
+export function activitiesReducer(state: ActivitiesState = initialState, action: ActivitiesAction): ActivitiesState {
   console.log(action.type);
   switch (action.type) {
     case LOAD_ACTIVITIES:

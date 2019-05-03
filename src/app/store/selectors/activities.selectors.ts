@@ -1,25 +1,20 @@
-import { AppState } from './../reducers/index';
+import { AppState, getActivitiesState } from './../reducers/index';
 
 import { Activity, ActivitiesState } from './../models/activity.model';
 import { createSelector } from '@ngrx/store';
-import { getAppState } from '../reducers';
 
-export const getActivitiesRootState = createSelector(
-  getAppState,
-  (state: AppState) => state.activitiesRoot
-);
 
 export const getActivities = createSelector(
-  getActivitiesRootState,
+  getActivitiesState,
   (state: ActivitiesState) => state.activities
 );
 
 export const getActivitiesLoadStatus = createSelector(
-  getActivitiesRootState,
+  getActivitiesState,
   (state: ActivitiesState) => state.loadActivitiesStatus
 );
 
 export const getActivitiesAddStatus = createSelector(
-  getActivitiesRootState,
+  getActivitiesState,
   (state: ActivitiesState) => state.addActivityStatus
 );

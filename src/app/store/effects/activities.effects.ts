@@ -43,9 +43,6 @@ import {
 import {
   DocumentChangeAction
 } from '@angular/fire/firestore';
-import {
-  Activity
-} from '../models/activity.model';
 
 @Injectable()
 export class ActivitiesEffects {
@@ -94,7 +91,7 @@ export class ActivitiesEffects {
 
 
   @Effect()
-  removeActivity$ = this.actions$.pipe(ofType(DELETE_ACTIVITY)).pipe(
+  deleteActivity$ = this.actions$.pipe(ofType(DELETE_ACTIVITY)).pipe(
     map((action: DeleteActivity) => action.payload),
     switchMap(activityId => {
       return this.activityService
