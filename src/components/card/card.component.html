@@ -1,11 +1,23 @@
 <div class="card">
   <div class="card__header">
-      <div class="card__title" [ngStyle]="{'color': activity.color}">{{activity.title}}</div>
+      <div class="card__title" [ngStyle]="{'color': activity.color}" #title  matTooltip={{activity.title}} [matTooltipClass]="'title'" [matTooltipDisabled]="!showTooltipTitle">{{activity.title}}</div>
       <div class="card__settings"><i class="fa fa-cog"></i></div>
   </div>
-  <div class="card__desc">
+  <div class="seporator">
 
   </div>
+  <!-- <div class="card__playlists-list">
+    <div class="card__playlist-icon"></div>
+  </div> -->
+  <st-seporator [hidden]="!activity.desc" [marginTop]="5"></st-seporator>
+  <div class="card__desc" #desc  matTooltip={{activity.desc}} [matTooltipClass]="'desc'" [matTooltipDisabled]="!showTooltipDesc">{{activity.desc}}</div>
+  <st-seporator [hidden]="!activity.desc"></st-seporator>
+  <div class="card__params" >
+    <div class="card__frequency" *ngIf="activity.frequency"> Frequency: <span class="card__frequency-value">{{activity.frequency}}</span></div>
+    <div class="card__priority" *ngIf="activity.priority"> Priority: <span class="card__priority-value">{{activity.priority}}</span></div>
+  </div>
 
-  <ng-content> </ng-content>
+  <div class="card__tags-container" >
+    <div class="card__tag" *ngFor="let tag of activity.tags; trackBy:tag">#{{tag}}</div>
+  </div>
 </div>

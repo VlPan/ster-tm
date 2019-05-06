@@ -11,7 +11,7 @@ import { Activity } from 'src/app/store/models/activity.model';
   selector: 'st-activities',
   templateUrl: './activities.view.html',
   styleUrls: ['./activities.view.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.Default
 })
 export class ActivitiesView implements OnInit, OnDestroy {
 
@@ -20,6 +20,18 @@ export class ActivitiesView implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.store.dispatch(new LoadActivities());
+    // this.store.dispatch(new AddActivity({
+    //   title: 'brand new activity 2',
+    //   desc: `Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+    //   Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+    //   `,
+    //   tags: ['programmin', 'intellegence'],
+    //   comments: `1) comment 1
+    //               2) comment `,
+    //   frequency: 2,
+    //   priority: 3,
+    //   color: 'green'
+    // }));
 
     this.activities$ = this.store.select(getActivities);
   }

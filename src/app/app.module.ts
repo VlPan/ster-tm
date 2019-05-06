@@ -24,6 +24,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ActivitiesView } from 'src/views/activities/activities.view';
 import { PageNotFoundView } from 'src/views/page-not-found/page-not-found.view';
+import { SeporatorComponent } from 'src/components/seporator/seporator.component';
 
 export const metaReducers: MetaReducer<any>[] = !environment.production
   ? [storeFreeze]
@@ -37,7 +38,8 @@ export const metaReducers: MetaReducer<any>[] = !environment.production
     CardComponent,
     ActivitiesView,
     PageNotFoundView,
-    CardComponent
+    CardComponent,
+    SeporatorComponent
   ],
   imports: [
     BrowserModule,

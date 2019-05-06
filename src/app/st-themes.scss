@@ -1,7 +1,7 @@
 @import '~@angular/material/theming';
 @include mat-core();
 
-$st-theme-light-primary: mat-palette($mat-green, 600, A700, 800);
+$st-theme-light-primary: mat-palette($mat-blue, 700, 600, 900);
 $st-theme-light-accent: mat-palette($mat-yellow, 600, 400, 700);
 $st-theme-light-warn: mat-palette($mat-orange, 700, A200, A700);
 
@@ -11,9 +11,9 @@ $st-light-theme:   mat-light-theme($st-theme-light-primary, $st-theme-light-acce
 @include angular-material-theme($st-light-theme);
 
 /* colors */
-$primary: #43a047;
-$primary-light: #00c853;
-$primary-dark: #2e7d32;
+$primary: #1976d2;
+$primary-light: #1e88e5;
+$primary-dark: #0d47a1;
 
 $accent: #fdd835;
 $accent-light:#ffee58;
@@ -26,7 +26,10 @@ $warn-dark: #ff6d00;
 
 $text-primary: #616161;
 $text-light: #757575;
+$text-light-2: #d7dae0;
 $text-dark: #212121;
 
 $text-white: whitesmoke;
+$black-transparent: rgba(0,0,0, .8);
+$black-transparent-2: rgba(0,0,0, .3);
 

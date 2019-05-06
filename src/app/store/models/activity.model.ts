@@ -1,14 +1,19 @@
 export interface Activity {
-  id: string;
+  id?: string;
   title: string;
-  desc?: boolean;
-  categories?: string;
-  comments?: number;
-  frequency?: string;
-  priority?: string;
-  color: 'string';
+  desc?: string;
+  tags?: string[];
+  comments?: string;
+  frequency?: number;
+  priority?: number;
+  color?: string;
+  playlists?: Playlist[];
 }
-
+export interface Playlist {
+  activities: Activity[];
+  icon: string;
+  color: string;
+}
 export interface STERModel {
   selfLessNess: number;
   timeLessNess: number;
