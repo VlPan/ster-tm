@@ -13,7 +13,7 @@ import {
   DeleteActivityHistoryStatus,
   UpdateActivityHistoryStatus,
   LoadActivityHistoryStatus
-} from './../models/activity.model';
+} from '../models/activity-history.model';
 import {
 
 } from './../actions/activities.actions';
@@ -83,6 +83,7 @@ export function activityHistoryReducer(state: ActivityHistoryState = initialStat
       };
 
     case DELETE_ACTIVITY_HISTORY_SUCCESS:
+      console.log('REDUCER');
       return {
         ...state,
         deleteActivityHistoryStatus: DeleteActivityHistoryStatus.SUCCESS

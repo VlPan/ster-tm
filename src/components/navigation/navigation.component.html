@@ -1,0 +1,24 @@
+<nav class="st-nav">
+  <div class="st-nav__panel">
+      <input type="checkbox" id="c">
+      <label for="c" class="wrapper" (click)="toggleMenu()"></label>
+      <div class="menu-icon"></div>
+  </div>
+
+  <div class="st-nav__content" [ngClass]="{'st-nav__content--active': menuToggled}">
+      <section class="menu" >
+          <div class="menu-item"
+            *ngFor="let link of links"
+            routerLink="{{link.value}}"
+            [routerLinkActiveOptions]="{ exact: true }"
+            routerLinkActive="app-navigation__link--active"
+            (click)="toggleMenu()"
+           >
+              <i [class]="link.icon"></i>
+              <div class="menu__text">{{link.name}}</div>
+          </div>
+    </section>
+  </div>
+</nav>
+
+

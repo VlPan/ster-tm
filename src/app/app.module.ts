@@ -1,3 +1,5 @@
+import { CardComponent } from './../components/card/card.component';
+import { NavigationComponent } from './../components/navigation/navigation.component';
 import { ActivitiesEffects } from './store/effects/activities.effects';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -16,6 +18,12 @@ import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import { ActivityService } from './services/activity.service';
 import { reducers } from './store/reducers';
 import { effects } from './store/effects';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from 'src/modules/material/material.module';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { ActivitiesView } from 'src/views/activities/activities.view';
+import { PageNotFoundView } from 'src/views/page-not-found/page-not-found.view';
 
 export const metaReducers: MetaReducer<any>[] = !environment.production
   ? [storeFreeze]
@@ -24,7 +32,12 @@ export const metaReducers: MetaReducer<any>[] = !environment.production
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavigationComponent,
+    CardComponent,
+    ActivitiesView,
+    PageNotFoundView,
+    CardComponent
   ],
   imports: [
     BrowserModule,
@@ -35,8 +48,12 @@ export const metaReducers: MetaReducer<any>[] = !environment.production
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     AngularFirestoreModule,
     AngularFireAuthModule,
+    BrowserAnimationsModule,
+    MaterialModule,
+    FormsModule
   ],
   providers: [ActivityService, AngularFirestore],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+
 })
 export class AppModule { }

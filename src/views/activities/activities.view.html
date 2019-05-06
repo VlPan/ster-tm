@@ -1,0 +1,9 @@
+<div class="activities__container">
+  <st-card
+    *ngFor="let activity of (activities$ | async); trackBy:trackByFn"
+    [activity]="activity"
+    (deleted)="deleteActivity(activity.id)"
+  >
+
+  </st-card>
+</div>

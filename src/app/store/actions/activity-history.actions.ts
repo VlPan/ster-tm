@@ -1,5 +1,5 @@
-
-import { Activity, ActivityHistoryItem } from '../models/activity.model';
+import { ActivityHistoryItem } from '../models/activity-history.model';
+import { Activity } from '../models/activity.model';
 import {Action} from '@ngrx/store';
 
 export const LOAD_ACTIVITY_HISTORY = '[STER] LOAD ACTIVITY HISTORY';
@@ -21,9 +21,9 @@ export class LoadActivityHistorySuccess implements Action {
 }
 
 
-export const ADD_ACTIVITY_HISTORY = '[STER] ADD ACTIVITY';
-export const ADD_ACTIVITY_HISTORY_SUCESS = '[STER] ADD ACTIVITY SUCCESS';
-export const ADD_ACTIVITY_HISTORY_FAILED = '[STER] ADD ACTIVITY FAILED';
+export const ADD_ACTIVITY_HISTORY = '[STER] ADD ACTIVITY HISTORY';
+export const ADD_ACTIVITY_HISTORY_SUCESS = '[STER] ADD ACTIVITY HISTORY SUCCESS';
+export const ADD_ACTIVITY_HISTORY_FAILED = '[STER] ADD ACTIVITY HISTORY FAILED';
 
 
 
@@ -43,9 +43,9 @@ export class AddActivityHistorySuccess implements Action {
 }
 
 
-export const DELETE_ACTIVITY_HISTORY = '[STER] DELETE ACTIVITY';
-export const DELETE_ACTIVITY_HISTORY_SUCCESS = '[STER] DELETE ACTIVITY SUCCESS';
-export const DELETE_ACTIVITY_HISTORY_FAILED = '[STER] DELETE ACTIVITY FAILED';
+export const DELETE_ACTIVITY_HISTORY = '[STER] DELETE ACTIVITY HISTORY';
+export const DELETE_ACTIVITY_HISTORY_SUCCESS = '[STER] DELETE ACTIVITY HISTORY SUCCESS';
+export const DELETE_ACTIVITY_HISTORY_FAILED = '[STER] DELETE ACTIVITY HISTORY FAILED';
 
 export class DeleteActivityHistory implements Action {
   readonly type = DELETE_ACTIVITY_HISTORY;
@@ -64,8 +64,8 @@ export class DeleteActivityHistoryFailed implements Action {
 
 
 export const UPDATE_ACTIVITY_HISTORY = '[STER] UPDATE ACTIVITY';
-export const UPDATE_ACTIVITY_HISTORY_SUCCESS = '[STER] UPDATE ACTIVITY SUCCESS';
-export const UPDATE_ACTIVITY_HISTORY_FAILED = '[STER] UPDATE ACTIVITY FAILED';
+export const UPDATE_ACTIVITY_HISTORY_SUCCESS = '[STER] UPDATE ACTIVITY HISTORY SUCCESS';
+export const UPDATE_ACTIVITY_HISTORY_FAILED = '[STER] UPDATE ACTIVITY HISTORY FAILED';
 
 export class UpdateActivityHistory implements Action {
   readonly type = UPDATE_ACTIVITY_HISTORY;

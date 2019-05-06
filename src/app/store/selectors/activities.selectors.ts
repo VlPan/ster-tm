@@ -1,6 +1,6 @@
-import { AppState, getActivitiesState } from './../reducers/index';
+import { getActivitiesState } from './../reducers/index';
 
-import { Activity, ActivitiesState } from './../models/activity.model';
+import { ActivitiesState } from '../models/activity.model';
 import { createSelector } from '@ngrx/store';
 
 

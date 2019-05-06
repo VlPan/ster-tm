@@ -1,4 +1,4 @@
-import { LoadActivitiesStatus, AddActivityStatus, DeleteActivityStatus, UpdateActivityStatus } from './../models/activity.model';
+import { LoadActivitiesStatus, AddActivityStatus, DeleteActivityStatus, UpdateActivityStatus } from '../models/activity.model';
 import {
   LOAD_ACTIVITIES,
   LOAD_ACTIVITIES_SUCCESS,

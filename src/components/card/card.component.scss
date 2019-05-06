@@ -1,0 +1,49 @@
+
+@import './../../app/st-themes.scss';
+
+.card {
+  width: 300px;
+  min-height: 300px;
+  transition: all .4s;
+  animation: fillIn .3s linear;
+  position: relative;
+  display: inline-block;
+  margin: 20px;
+  border-radius: 15px;
+  color: $text-primary;
+  -webkit-box-shadow: 4px 3px 23px 0px rgba(0,0,0,0.64);
+  -moz-box-shadow: 4px 3px 23px 0px rgba(0,0,0,0.64);
+  box-shadow:4px 3px 23px 0px rgba(0,0,0,0.64);
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 15px;
+    flex-wrap: wrap;
+  }
+
+  &__title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: $primary;
+  }
+
+  &__settings {
+    cursor: pointer;
+    color: $text-primary;
+    font-size: 1.2rem;
+  }
+}
+
+@keyframes fillIn  {
+  from {
+    opacity: 0;
+    transform: translateY(-15px)
+  }
+
+  to {
+    opacity: 100;
+    transform: translateY(0px)
+  }
+}

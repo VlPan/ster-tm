@@ -16,7 +16,6 @@ constructor(private db: AngularFirestore) {}
   }
 
   addActivity(activity: Activity) {
-    console.log('add activity');
     return of(this.db.collection('activities').add(activity));
   }
 

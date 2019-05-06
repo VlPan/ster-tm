@@ -1,10 +1,12 @@
 export interface Activity {
+  id: string;
   title: string;
   desc?: boolean;
   categories?: string;
   comments?: number;
   frequency?: string;
   priority?: string;
+  color: 'string';
 }
 
 export interface STERModel {
@@ -14,13 +16,6 @@ export interface STERModel {
   richNess: number;
 }
 
-export interface ActivityHistoryItem {
-  activity: Activity;
-  time: number;
-  sterOptions?: STERModel;
-  userOptions: {[key: string]: any};
-  scores: number;
-}
 
 export enum AddActivityStatus {
   INIT,
@@ -51,33 +46,6 @@ export enum UpdateActivityStatus {
   FAILED
 }
 
-export enum AddActivityHistoryStatus {
-  INIT,
-  PROGRESS,
-  SUCCESS,
-  FAILED
-}
-
-export enum LoadActivityHistoryStatus {
-  INIT,
-  PROGRESS,
-  SUCCESS,
-  FAILED
-}
-
-export enum DeleteActivityHistoryStatus {
-  INIT,
-  PROGRESS,
-  SUCCESS,
-  FAILED
-}
-
-export enum UpdateActivityHistoryStatus {
-  INIT,
-  PROGRESS,
-  SUCCESS,
-  FAILED
-}
 
 
 export class ActivitiesState {
@@ -86,12 +54,4 @@ export class ActivitiesState {
   loadActivitiesStatus: LoadActivitiesStatus;
   deleteActivityStatus: DeleteActivityStatus;
   updateActivityStatus: UpdateActivityStatus;
-}
-
-export class ActivityHistoryState {
-  activityHistory: ActivityHistoryItem[];
-  addActivityHistoryStatus: AddActivityHistoryStatus;
-  loadActivityHistoryStatus: LoadActivityHistoryStatus;
-  deleteActivityHistoryStatus: DeleteActivityHistoryStatus;
-  updateActivityHistoryStatus: UpdateActivityHistoryStatus;
 }

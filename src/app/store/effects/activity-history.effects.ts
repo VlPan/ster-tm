@@ -1,8 +1,21 @@
-import { LOAD_ACTIVITY_HISTORY, LoadActivityHistorySuccess, LoadActivityHistoryFailed, ADD_ACTIVITY_HISTORY, AddActivityHistory, AddActivityHistorySuccess, AddActivityHistoryFailed, DELETE_ACTIVITY_HISTORY, DeleteActivityHistory, DeleteActivityHistorySuccess, DeleteActivityHistoryFailed, UPDATE_ACTIVITY_HISTORY, UpdateActivityHistory, UpdateActivityHistorySuccess, UpdateActivityHistoryFailed } from './../actions/activity-history.actions';
-
 import {
-  ActivityService
-} from './../../services/activity.service';
+  LOAD_ACTIVITY_HISTORY,
+  LoadActivityHistorySuccess,
+  LoadActivityHistoryFailed,
+  ADD_ACTIVITY_HISTORY,
+  AddActivityHistory,
+  AddActivityHistorySuccess,
+  AddActivityHistoryFailed,
+  DELETE_ACTIVITY_HISTORY,
+  DeleteActivityHistory,
+  DeleteActivityHistorySuccess,
+  DeleteActivityHistoryFailed,
+  UPDATE_ACTIVITY_HISTORY,
+  UpdateActivityHistory,
+  UpdateActivityHistorySuccess,
+  UpdateActivityHistoryFailed
+} from './../actions/activity-history.actions';
+
 import {
   Injectable
 } from '@angular/core';
@@ -17,18 +30,22 @@ import {
   switchMap,
   catchError,
   filter,
-  takeUntil
+  takeUntil,
+  tap
 } from 'rxjs/operators';
 import {
-  LOAD_ACTIVITIES, PAGE_DESTROYED
+  LOAD_ACTIVITIES,
+  PAGE_DESTROYED
 } from '../actions/activities.actions';
 import {
-  of
+  of, defer
 } from 'rxjs';
 import {
   DocumentChangeAction
 } from '@angular/fire/firestore';
-import { ActivityHistory } from 'src/app/services/activityHistory.service';
+import {
+  ActivityHistory
+} from 'src/app/services/activity-history.service';
 
 @Injectable()
 export class ActivityHistoryEffects {
@@ -77,16 +94,19 @@ export class ActivityHistoryEffects {
 
 
   @Effect()
-  deleteActivityHistory$ = this.actions$.pipe(ofType(DELETE_ACTIVITY_HISTORY)).pipe(
+  deleteActivityHistory$ = this.actions$.pipe(
+    ofType(DELETE_ACTIVITY_HISTORY),
     map((action: DeleteActivityHistory) => action.payload),
     switchMap(activityId => {
-      return this.activityHistory
-        .deleteActivityHistory(activityId)
+      return defer(async () => {
+        await this.activityHistory.deleteActivityHistoryByActivityId(activityId);
+      })
         .pipe(
+          tap(res => console.log('RESUULT', res)),
           takeUntil(
             this.actions$.pipe(ofType(PAGE_DESTROYED))
           ),
-          map(() => new DeleteActivityHistorySuccess()),
+          map((res) => new DeleteActivityHistorySuccess()),
           catchError(error => of (new DeleteActivityHistoryFailed(error)))
         );
     })
