@@ -47,6 +47,7 @@ import {CdkStepperModule} from '@angular/cdk/stepper';
 import {CdkTableModule} from '@angular/cdk/table';
 import {CdkTreeModule} from '@angular/cdk/tree';
 import {DragDropModule} from '@angular/cdk/drag-drop';
+import {EcoFabSpeedDialModule} from '@ecodev/fab-speed-dial';
 
 @NgModule({
   exports: [
@@ -98,6 +99,7 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
     MatToolbarModule,
     MatTooltipModule,
     MatTreeModule,
+    EcoFabSpeedDialModule
   ]
 })
 export class MaterialModule {}

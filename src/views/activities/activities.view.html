@@ -7,3 +7,13 @@
 
   </st-card>
 </div>
+
+<eco-fab-speed-dial class="actions-button" color="primary">
+  <eco-fab-speed-dial-trigger>
+      <button mat-fab ><mat-icon>menu</mat-icon></button>
+  </eco-fab-speed-dial-trigger>
+
+  <eco-fab-speed-dial-actions>
+      <button mat-mini-fab (click)="openAddActivityDialog()"><mat-icon>add</mat-icon></button>
+  </eco-fab-speed-dial-actions>
+</eco-fab-speed-dial>

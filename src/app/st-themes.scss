@@ -2,7 +2,7 @@
 @include mat-core();
 
 $st-theme-light-primary: mat-palette($mat-blue, 700, 600, 900);
-$st-theme-light-accent: mat-palette($mat-yellow, 600, 400, 700);
+$st-theme-light-accent: mat-palette($mat-teal, 500, 400, 600);
 $st-theme-light-warn: mat-palette($mat-orange, 700, A200, A700);
 
 
@@ -15,10 +15,10 @@ $primary: #1976d2;
 $primary-light: #1e88e5;
 $primary-dark: #0d47a1;
 
-$accent: #fdd835;
-$accent-light:#ffee58;
-$accent-dark: #fbc02d;
-$accent-dark-2: #ce9f27;
+$accent: #009688;
+$accent-light:#26a69a;
+$accent-dark: #00897b;
+$accent-dark-2: #00695c;
 
 $warn: #f57c00;
 $warn-light: #ffab40;

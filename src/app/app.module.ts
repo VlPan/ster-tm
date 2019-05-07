@@ -1,3 +1,4 @@
+import { AddActivityDialogComponent } from './../components/add-activity-dialog/add-activity-dialog.component';
 import { CardComponent } from './../components/card/card.component';
 import { NavigationComponent } from './../components/navigation/navigation.component';
 import { ActivitiesEffects } from './store/effects/activities.effects';
@@ -20,7 +21,7 @@ import { reducers } from './store/reducers';
 import { effects } from './store/effects';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from 'src/modules/material/material.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ActivitiesView } from 'src/views/activities/activities.view';
 import { PageNotFoundView } from 'src/views/page-not-found/page-not-found.view';
@@ -39,7 +40,8 @@ export const metaReducers: MetaReducer<any>[] = !environment.production
     ActivitiesView,
     PageNotFoundView,
     CardComponent,
-    SeporatorComponent
+    SeporatorComponent,
+    AddActivityDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -52,10 +54,14 @@ export const metaReducers: MetaReducer<any>[] = !environment.production
     AngularFireAuthModule,
     BrowserAnimationsModule,
     MaterialModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [ActivityService, AngularFirestore],
   bootstrap: [AppComponent],
+  entryComponents: [
+    AddActivityDialogComponent
+  ]
 
 })
 export class AppModule { }

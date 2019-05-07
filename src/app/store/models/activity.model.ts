@@ -8,6 +8,13 @@ export interface Activity {
   priority?: number;
   color?: string;
   playlists?: Playlist[];
+  userOptions?: Option[];
+}
+
+export interface Option {
+  name: string;
+  min: number;
+  max: number;
 }
 export interface Playlist {
   activities: Activity[];
