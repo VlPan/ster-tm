@@ -1,3 +1,4 @@
+import { DeleteActivityDialogComponent } from './../components/delete-dialog/delete-dialog';
 import { AddActivityDialogComponent } from './../components/add-activity-dialog/add-activity-dialog.component';
 import { CardComponent } from './../components/card/card.component';
 import { NavigationComponent } from './../components/navigation/navigation.component';
@@ -41,7 +42,8 @@ export const metaReducers: MetaReducer<any>[] = !environment.production
     PageNotFoundView,
     CardComponent,
     SeporatorComponent,
-    AddActivityDialogComponent
+    AddActivityDialogComponent,
+    DeleteActivityDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +62,8 @@ export const metaReducers: MetaReducer<any>[] = !environment.production
   providers: [ActivityService, AngularFirestore],
   bootstrap: [AppComponent],
   entryComponents: [
-    AddActivityDialogComponent
+    AddActivityDialogComponent,
+    DeleteActivityDialogComponent
   ]
 
 })

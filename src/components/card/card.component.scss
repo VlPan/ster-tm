@@ -37,7 +37,34 @@
   &__settings {
     cursor: pointer;
     color: $text-primary;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
+  }
+
+  &__settings-menu {
+    position: absolute;
+    padding: 15px 7px;
+    font-size: 1.4rem;
+    display: flex;
+    flex-direction: row-reverse;
+    width: 60%;
+    background: $black-transparent-3;
+    color: white;
+    border-radius: 7px;
+    opacity: 0;
+    transform: translateX(120px);
+    transition: all .3s;
+    z-index: -1;
+  }
+
+  &__settings-menu__delete {
+    color: $warn;
+    cursor: pointer;
+  }
+
+  &__settings-menu--active {
+    opacity: 1;
+    z-index: 1;
+    transform: translateX(23%);
   }
 
   &__desc{

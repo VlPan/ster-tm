@@ -1,7 +1,12 @@
 <div class="card">
   <div class="card__header">
       <div class="card__title" [ngStyle]="{'color': activity.color}" #title  matTooltip={{activity.title}} [matTooltipClass]="'title'" [matTooltipDisabled]="!showTooltipTitle">{{activity.title}}</div>
-      <div class="card__settings"><i class="fa fa-cog"></i></div>
+      <div class="card__settings" (click)="toggleCardSettingsMenu()"><i class="fa fa-cog"></i></div>
+      <div class="card__settings-menu" [hidden]="!cardSettingsMenuOpen" [ngClass]="{'card__settings-menu--active': cardSettingsMenuOpen}">
+        <div class="card__settings-menu__delete">
+          <i class="fa fa-trash" (click)="openActivityDeleteDialog()"></i>
+        </div>
+      </div>
   </div>
   <div class="seporator">
 

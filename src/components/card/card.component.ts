@@ -1,3 +1,4 @@
+import { DeleteActivityDialogComponent } from './../delete-dialog/delete-dialog';
 import {
   Component,
   OnInit,
@@ -16,6 +17,7 @@ import {
 import {
   Activity
 } from 'src/app/store/models/activity.model';
+import { MatDialog } from '@angular/material';
 
 
 
@@ -29,13 +31,14 @@ export class CardComponent implements AfterViewInit {
 
   showTooltipDesc: boolean;
   showTooltipTitle: boolean;
+  cardSettingsMenuOpen = false;
   @Input() activity: Activity;
 
   @Output() deleted: EventEmitter < any > = new EventEmitter();
   @ViewChild('desc') descEl: ElementRef;
   @ViewChild('title') titleEl: ElementRef;
 
-  constructor(private cd: ChangeDetectorRef) {}
+  constructor(private cd: ChangeDetectorRef, public dialog: MatDialog) {}
 
 
   ngAfterViewInit() {
@@ -57,8 +60,27 @@ export class CardComponent implements AfterViewInit {
     }
   }
 
-  deleteCard() {
-    this.deleted.emit();
+  deleteCard(activity: Activity) {
+    this.deleted.emit(activity.id);
+  }
+
+  toggleCardSettingsMenu() {
+    this.cardSettingsMenuOpen = !this.cardSettingsMenuOpen;
+  }
+
+  openActivityDeleteDialog() {
+    const dialogRef = this.dialog.open(DeleteActivityDialogComponent, {
+      data: { activity: this.activity }
+    });
+
+    const subsriber = dialogRef.afterClosed().subscribe(confirmed => {
+      if (confirmed) {
+        this.deleteCard(this.activity);
+        subsriber.unsubscribe();
+      }
+      this.toggleCardSettingsMenu();
+      this.cd.detectChanges();
+    });
   }
 
 }

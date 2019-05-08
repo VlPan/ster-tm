@@ -3,7 +3,7 @@
 
 $st-theme-light-primary: mat-palette($mat-blue, 700, 600, 900);
 $st-theme-light-accent: mat-palette($mat-teal, 500, 400, 600);
-$st-theme-light-warn: mat-palette($mat-orange, 700, A200, A700);
+$st-theme-light-warn: mat-palette($mat-red, A400, 400, 800);
 
 
 $st-light-theme:   mat-light-theme($st-theme-light-primary, $st-theme-light-accent, $st-theme-light-warn);
@@ -20,9 +20,9 @@ $accent-light:#26a69a;
 $accent-dark: #00897b;
 $accent-dark-2: #00695c;
 
-$warn: #f57c00;
-$warn-light: #ffab40;
-$warn-dark: #ff6d00;
+$warn: #ff1744;
+$warn-light: #ef5350;
+$warn-dark: #c62828;
 
 $text-primary: #616161;
 $text-light: #757575;
@@ -32,4 +32,5 @@ $text-dark: #212121;
 $text-white: whitesmoke;
 $black-transparent: rgba(0,0,0, .8);
 $black-transparent-2: rgba(0,0,0, .3);
+$black-transparent-3: rgba(0,0,0, .6);
 

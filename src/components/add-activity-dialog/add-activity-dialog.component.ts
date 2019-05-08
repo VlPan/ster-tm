@@ -38,7 +38,8 @@ export class AddActivityDialogComponent implements AfterContentInit {
 
   submit() {
     const title = this.titleFormControl.value;
-    const frequency = this.descFormControl.value;
+    const frequency = this.frequencyFormControl.value;
+    const desc = this.descFormControl.value;
     const priority = this.priorityFormControl.value;
     const useSTER = this.useSTERFormControl.value;
     const userOptions: Option[] = useSTER ? [
@@ -70,6 +71,7 @@ export class AddActivityDialogComponent implements AfterContentInit {
 
     const activity: Activity = {
       title,
+      desc,
       frequency,
       priority,
       userOptions,
