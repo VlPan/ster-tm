@@ -28,6 +28,7 @@ import { ActivitiesView } from 'src/views/activities/activities.view';
 import { PageNotFoundView } from 'src/views/page-not-found/page-not-found.view';
 import { SeporatorComponent } from 'src/components/seporator/seporator.component';
 import { UpdateActivityDialogComponent } from 'src/components/update-activity-dialog/update-activity-dialog.component';
+import { RandomActivityView } from 'src/views/random-activity/random-activity.view';
 
 export const metaReducers: MetaReducer<any>[] = !environment.production
   ? [storeFreeze]
@@ -45,7 +46,8 @@ export const metaReducers: MetaReducer<any>[] = !environment.production
     SeporatorComponent,
     AddActivityDialogComponent,
     DeleteActivityDialogComponent,
-    UpdateActivityDialogComponent
+    UpdateActivityDialogComponent,
+    RandomActivityView
   ],
   imports: [
     BrowserModule,

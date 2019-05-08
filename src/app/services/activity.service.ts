@@ -28,4 +28,21 @@ constructor(private db: AngularFirestore) {}
     const { id, value } = paylaod;
     return of(this.db.collection('activities').doc(id).set(value));
   }
+
+  pryoritizeActivities(activities: Activity[]): Activity[] {
+    return activities.reduce((acc, cur) => {
+      for (let i = 0; i < cur.frequency; i++) {
+        acc.push(cur);
+      }
+      return acc;
+    }, []);
+  }
+
+  getRandomActivity(activities) {
+    const min = 0;
+    const max = activities.length;
+    const rand = Math.floor(Math.random() * max) + min;
+
+    return activities[rand];
+  }
 }

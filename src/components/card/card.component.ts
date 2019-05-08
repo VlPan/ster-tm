@@ -67,6 +67,9 @@ export class CardComponent implements AfterViewInit {
     this.updated.emit({id: this.activity.id, value: updatedActivity});
   }
 
+  toggleCardSettingsMenu() {
+    this.cardSettingsMenuOpen = !this.cardSettingsMenuOpen;
+  }
   closeCardSettingsMenu() {
     this.cardSettingsMenuOpen = false;
   }

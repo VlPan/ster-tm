@@ -1,0 +1,60 @@
+<div class="random-activity-view">
+  <div class="m-wrap tx">
+    <div class="o-watch-wrap">
+      <div class="watch-ui">
+        <div class="o-ring">
+          <div class="o-timer-wrap">
+            <div class="ring-wrap">
+              <svg class="c-t" width="200" height="200">
+                <circle class="c-c" cx="90" cy="100" r="97.5" transform="rotate(-90, 95, 95)" />
+              </svg>
+            </div>
+            <div class="o-timer">
+
+              <span class="t-time">20:00</span>
+              <span class="oop">of 20</span>
+              <span class="hours">2 <span class="hours-label">hours</span></span>
+            </div>
+          </div>
+          <div class="t-options">
+            <span class="t-options-time">
+              <span class="btn b-dec o-opt-btn b-revc glyphicon glyphicon-play"></span>
+              <span class="o-opt-btn display"></span>
+              <span class="btn b-inc o-opt-btn glyphicon glyphicon-play"></span>
+            </span>
+          </div>
+        </div>
+        <div class="o-controllers">
+          <button class="btn button sp-btn repeat-btn">
+            <span class="glyphicon glyphicon-repeat random-activity__icon">
+              <i class="fa fa-undo"></i>
+            </span>
+          </button>
+          <button mat-icon-button class="btn button sp-btn pause-btn ">
+            <span class="in-btn glyphicon glyphicon-pause random-activity__icon random-activity__icon--big">
+                <i class="fa fa-play"></i>
+            </span>
+          </button>
+          <button class="btn button sp-btn menu-btn button-menu">
+            <span class="glyphicon glyphicon-menu-hamburger random-activity__icon">
+              <i class="fa fa-bars"></i>
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="activity-slader">
+    <div class="activity-slader__container">
+      <div class="activity-slader__prev">
+
+      </div>
+      <div class="activity-activity-name">{{this.currentActivity.title}}</div>
+      <div class="activity-slader__next">
+
+      </div>
+    </div>
+  </div>
+
+</div>
