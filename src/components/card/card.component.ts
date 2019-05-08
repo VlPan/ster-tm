@@ -1,7 +1,7 @@
+import { UpdateActivityDialogComponent } from 'src/components/update-activity-dialog/update-activity-dialog.component';
 import { DeleteActivityDialogComponent } from './../delete-dialog/delete-dialog';
 import {
   Component,
-  OnInit,
   Input,
   Output,
   EventEmitter,
@@ -9,10 +9,7 @@ import {
   ViewChild,
   AfterViewInit,
   ChangeDetectorRef,
-  DoCheck,
   ChangeDetectionStrategy,
-  OnChanges,
-  SimpleChanges
 } from '@angular/core';
 import {
   Activity
@@ -35,8 +32,10 @@ export class CardComponent implements AfterViewInit {
   @Input() activity: Activity;
 
   @Output() deleted: EventEmitter < any > = new EventEmitter();
+  @Output() updated: EventEmitter < any > = new EventEmitter();
   @ViewChild('desc') descEl: ElementRef;
   @ViewChild('title') titleEl: ElementRef;
+  @ViewChild('cardMenu') cardMenuEl: ElementRef;
 
   constructor(private cd: ChangeDetectorRef, public dialog: MatDialog) {}
 
@@ -64,8 +63,17 @@ export class CardComponent implements AfterViewInit {
     this.deleted.emit(activity.id);
   }
 
-  toggleCardSettingsMenu() {
-    this.cardSettingsMenuOpen = !this.cardSettingsMenuOpen;
+  updateCard(updatedActivity: Activity) {
+    this.updated.emit({id: this.activity.id, value: updatedActivity});
+  }
+
+  closeCardSettingsMenu() {
+    this.cardSettingsMenuOpen = false;
+  }
+
+  openCardSettingsMenu() {
+    this.cardSettingsMenuOpen = true;
+    this.cardMenuEl.nativeElement.focus();
   }
 
   openActivityDeleteDialog() {
@@ -78,8 +86,19 @@ export class CardComponent implements AfterViewInit {
         this.deleteCard(this.activity);
         subsriber.unsubscribe();
       }
-      this.toggleCardSettingsMenu();
-      this.cd.detectChanges();
+    });
+  }
+
+  openActivityUpdateDialog() {
+    const dialogRef = this.dialog.open(UpdateActivityDialogComponent, {
+      data: { activity: this.activity }
+    });
+
+    const subsriber = dialogRef.afterClosed().subscribe(updatedActivty => {
+      if (updatedActivty) {
+        this.updateCard(updatedActivty);
+        subsriber.unsubscribe();
+      }
     });
   }
 

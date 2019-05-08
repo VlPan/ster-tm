@@ -27,6 +27,7 @@ import { CommonModule } from '@angular/common';
 import { ActivitiesView } from 'src/views/activities/activities.view';
 import { PageNotFoundView } from 'src/views/page-not-found/page-not-found.view';
 import { SeporatorComponent } from 'src/components/seporator/seporator.component';
+import { UpdateActivityDialogComponent } from 'src/components/update-activity-dialog/update-activity-dialog.component';
 
 export const metaReducers: MetaReducer<any>[] = !environment.production
   ? [storeFreeze]
@@ -43,7 +44,8 @@ export const metaReducers: MetaReducer<any>[] = !environment.production
     CardComponent,
     SeporatorComponent,
     AddActivityDialogComponent,
-    DeleteActivityDialogComponent
+    DeleteActivityDialogComponent,
+    UpdateActivityDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +65,8 @@ export const metaReducers: MetaReducer<any>[] = !environment.production
   bootstrap: [AppComponent],
   entryComponents: [
     AddActivityDialogComponent,
-    DeleteActivityDialogComponent
+    DeleteActivityDialogComponent,
+    UpdateActivityDialogComponent
   ]
 
 })

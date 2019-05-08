@@ -1,5 +1,5 @@
 import { AddActivityDialogComponent } from './../../components/add-activity-dialog/add-activity-dialog.component';
-import { AddActivity } from './../../app/store/actions/activities.actions';
+import { AddActivity, UpdateActivity } from './../../app/store/actions/activities.actions';
 import { AppState } from './../../app/store/reducers/index';
 import { Component, OnInit, OnDestroy, ChangeDetectionStrategy, ViewChild, ElementRef, AfterContentInit } from '@angular/core';
 import { Store } from '@ngrx/store';
@@ -45,6 +45,13 @@ export class ActivitiesView implements OnInit, OnDestroy {
   public deleteActivity(id: string) {
     this.store.dispatch(new DeleteActivity(id));
   }
+
+  public updateActivity(arg: {id: string, value: Activity}) {
+    console.log('arg', arg);
+    const {id, value} = arg;
+    this.store.dispatch(new UpdateActivity({id, value}));
+  }
+
 
   public trackByFn(activity: Activity) {
     return activity && activity.id;

@@ -42,8 +42,6 @@
 
   &__settings-menu {
     position: absolute;
-    padding: 15px 7px;
-    font-size: 1.4rem;
     display: flex;
     flex-direction: row-reverse;
     width: 60%;
@@ -56,9 +54,35 @@
     z-index: -1;
   }
 
+  &__settings-menu:focus {
+    outline: none;
+  }
+
   &__settings-menu__delete {
     color: $warn;
     cursor: pointer;
+
+
+    &:hover {
+      background: $warn;
+      color: $text-white;
+    }
+  }
+
+  &__settings-menu__update {
+    color: $accent-dark;
+    cursor: pointer;
+
+    &:hover {
+      background: $accent-dark;
+      color: $text-white;
+    }
+  }
+
+  &__settings-menu-item {
+    font-size: 1.4rem;
+    padding: 15px 12px;
+    transition: all .3s;
   }
 
   &__settings-menu--active {

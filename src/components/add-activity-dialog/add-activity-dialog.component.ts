@@ -3,8 +3,7 @@ import { Component, OnInit, AfterContentInit } from '@angular/core';
 import { MatDialogRef, MatDialog } from '@angular/material';
 import { FormControl, Validators } from '@angular/forms';
 import { Option, Activity } from 'src/app/store/models/activity.model';
-import { Store } from '@ngrx/store';
-import { AddActivity } from 'src/app/store/actions/activities.actions';
+import { MyErrorStateMatcher } from '../update-activity-dialog/update-activity-dialog.component';
 
 @Component({
   selector: 'st-add-activity-dialog',
@@ -16,7 +15,6 @@ export class AddActivityDialogComponent implements AfterContentInit {
   constructor(
     public dialogAddRef: MatDialogRef<AddActivityDialogComponent>,
     public dialog: MatDialog,
-    private store: Store<AppState>
   ) { }
 
   titleFormControl: FormControl;
@@ -24,6 +22,7 @@ export class AddActivityDialogComponent implements AfterContentInit {
   frequencyFormControl: FormControl;
   priorityFormControl: FormControl;
   useSTERFormControl: FormControl;
+  matcher: MyErrorStateMatcher;
 
   ngAfterContentInit(): void {
     this.titleFormControl = new FormControl('', [

@@ -3,6 +3,7 @@
     *ngFor="let activity of (activities$ | async); trackBy:trackByFn"
     [activity]="activity"
     (deleted)="deleteActivity(activity.id)"
+    (updated)="updateActivity($event)"
   >
 
   </st-card>
