@@ -70,6 +70,8 @@ button {
   height: 90vh;
   color: $white;
   background-color: $accent-light-2;
+  display: flex;
+  flex-direction: column;
 
   .o-watch-wrap {
     @extend .tx;
@@ -258,5 +260,40 @@ button {
         @extend .tx;
       }
     }
+  }
+}
+
+.activity-slader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  border-radius: 7px;
+  -webkit-box-shadow: 10px 10px 33px -4px rgba(0,0,0,0.75);
+  -moz-box-shadow: 10px 10px 33px -4px rgba(0,0,0,0.75);
+  box-shadow: 10px 10px 33px -4px rgba(0,0,0,0.75);
+  &__container{
+    background: $primary-light;
+    min-width: 230px;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    & > * {
+      margin-left: 15px;
+    }
+  }
+
+  &__next, &__prev {
+    cursor: pointer;
+    font-size: 1.4rem;
+  }
+
+  &__next--disabled {
+    color: rgba($white, .3);
+  }
+
+  &__prev--disabled {
+    color: rgba($white, .3);
   }
 }

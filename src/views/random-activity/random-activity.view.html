@@ -6,14 +6,14 @@
           <div class="o-timer-wrap">
             <div class="ring-wrap">
               <svg class="c-t" width="200" height="200">
-                <circle class="c-c" cx="90" cy="100" r="97.5" transform="rotate(-90, 95, 95)" />
+                <circle class="c-c" cx="90" cy="100" r="97.5" transform="rotate(-90, 95, 95)" #circle/>
               </svg>
             </div>
             <div class="o-timer">
 
-              <span class="t-time">20:00</span>
-              <span class="oop">of 20</span>
-              <span class="hours">2 <span class="hours-label">hours</span></span>
+              <span class="t-time">{{format(ts.mins)}}:{{format(ts.secs)}}</span>
+              <span class="oop">of {{ts.mmin}} min</span>
+              <span class="hours" *ngIf="ts.hours > 0">{{format(ts.hours)}} <span class="hours-label">hours</span></span>
             </div>
           </div>
           <div class="t-options">
@@ -26,13 +26,14 @@
         </div>
         <div class="o-controllers">
           <button class="btn button sp-btn repeat-btn">
-            <span class="glyphicon glyphicon-repeat random-activity__icon">
+            <span class="glyphicon glyphicon-repeat random-activity__icon" (click)="resetTimer()">
               <i class="fa fa-undo"></i>
             </span>
           </button>
           <button mat-icon-button class="btn button sp-btn pause-btn ">
-            <span class="in-btn glyphicon glyphicon-pause random-activity__icon random-activity__icon--big">
-                <i class="fa fa-play"></i>
+            <span class="in-btn glyphicon glyphicon-pause random-activity__icon random-activity__icon--big" (click)="toggleTimer()">
+                <i class="fa fa-play" *ngIf="!ts.running"></i>
+                <i class="fa fa-pause" *ngIf="ts.running"></i>
             </span>
           </button>
           <button class="btn button sp-btn menu-btn button-menu">
@@ -43,18 +44,19 @@
         </div>
       </div>
     </div>
-  </div>
-
-  <div class="activity-slader">
-    <div class="activity-slader__container">
-      <div class="activity-slader__prev">
-
-      </div>
-      <div class="activity-activity-name">{{this.currentActivity.title}}</div>
-      <div class="activity-slader__next">
-
+    <div class="activity-slader">
+      <div class="activity-slader__container">
+        <div class="activity-slader__prev" (click)="getPrevActivity()" [ngClass]="{'activity-slader__prev--disabled': !hasPrev()}">
+          <i class="fa fa-backward"></i>
+        </div>
+        <div class="activity-activity-name">{{this.currentActivity && this.currentActivity.title}}</div>
+        <div class="activity-slader__next" (click)="getNextActivity()">
+          <i class="fa fa-forward"></i>
+        </div>
       </div>
     </div>
   </div>
+
+
 
 </div>

@@ -36,6 +36,10 @@ export class RunningActivityService {
     }
   }
 
+  hasPrev() {
+    return !!this.activitiesRunningHistory[this.index - 1];
+  }
+
   hasNext() {
     return !!this.activitiesRunningHistory[this.index + 1];
   }

@@ -7,7 +7,9 @@ import {
 import {
   Component,
   OnInit,
-  OnDestroy
+  OnDestroy,
+  ViewChild,
+  ElementRef
 } from '@angular/core';
 import {
   Formatter
@@ -46,13 +48,15 @@ export class RandomActivityView implements OnInit, OnDestroy {
 
   constructor(
     private store: Store < AppState >,
-    private ts: TimerService,
+    public ts: TimerService,
     private ra: RunningActivityService,
     private activityService: ActivityService
   ) {}
   activities$: Observable < Activity[] > ;
   subscribtions: Subscription[] = [];
   pryoritizedActivities: Activity[] = [];
+
+  @ViewChild('circle') circleEl: ElementRef;
 
   get currentActivity() {
     return this.ra.getCurrentActivity();
@@ -87,6 +91,13 @@ export class RandomActivityView implements OnInit, OnDestroy {
     this.ra.getPrevActivity();
   }
 
+  hasNext() {
+    return this.ra.hasNext();
+  }
+
+  hasPrev() {
+    return this.ra.hasPrev();
+  }
   getNextActivity() {
     if (this.ra.hasNext()) {
       this.ra.getNextActivity();
@@ -95,11 +106,39 @@ export class RandomActivityView implements OnInit, OnDestroy {
     }
   }
 
+  toggleTimer() {
+    if (!this.ts.running) {
+      this.startTimer();
+    } else {
+      this.pauseTimer();
+    }
+  }
+
+  pauseTimer() {
+    this.ts.pauseTimer();
+  }
+
+  startTimer() {
+    this.ts.perc.subscribe((value) => {
+      this.circleEl.nativeElement.style.strokeDashoffset = value;
+    });
+    this.ts.startTimer();
+  }
+
+  resetTimer() {
+    this.ts.resetTimer();
+  }
+
+  clearTimer() {
+    this.ts.clearTimer();
+  }
+
   ngOnDestroy(): void {
     this.subscribtions.map(s => s.unsubscribe());
   }
 
   format(time: number) {
+    console.log('foramt', time);
     return Formatter.formatTimeNumber(time);
   }
 
