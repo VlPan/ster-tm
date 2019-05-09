@@ -10,7 +10,22 @@ button {
 
 
 .random-activity-view {
-  margin-top: -20px;
+  margin-top: -15px;
+  &__done-btn {
+    transform: translateY(-40px);
+    z-index: -1;
+    visibility: hidden;
+    opacity: 0;
+    font-size: 3rem;
+    transition: all .3s;
+
+    &--active {
+      z-index: 1;
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(20px);
+    }
+  }
 }
 
 .random-activity {

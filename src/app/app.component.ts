@@ -34,9 +34,9 @@ export class AppComponent {
     },
   ];
 
-  public addHistoryForActivity(activity: Activity) {
-    this.store.dispatch(new AddActivityHistory({activity, time: 25, scores: 25, }));
-  }
+  // public addHistoryForActivity(activity: Activity) {
+  //   this.store.dispatch(new AddActivityHistory({activity, time: 25, scores: 25, }));
+  // }
 
   public deleteActivityHistory(activity: Activity) {
     this.store.dispatch(new DeleteActivityHistory(activity.id));

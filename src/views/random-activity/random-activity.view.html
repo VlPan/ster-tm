@@ -55,7 +55,15 @@
         </div>
       </div>
     </div>
-  </div>
+    <button mat-icon-button
+     color="accent"
+     class="random-activity-view__done-btn"
+     [ngClass]="{'random-activity-view__done-btn--active': ts.mins >= ts.mmin}"
+     (click)="activityDone()"
+     >
+      <i class="fa fa-check-circle"></i>
+    </button>
+
 
 
 

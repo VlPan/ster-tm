@@ -1,3 +1,6 @@
+import { AddActivityHistory } from './../../app/store/actions/activity-history.actions';
+import { ActivityHistoryItem } from './../../app/store/models/activity-history.model';
+import { MatDialog } from '@angular/material';
 import {
   ActivityService
 } from './../../app/services/activity.service';
@@ -38,6 +41,8 @@ import {
   LoadActivities
 } from 'src/app/store/actions/activities.actions';
 import { take, filter } from 'rxjs/operators';
+import { ActivtyDoneDialogComponent } from 'src/components/activty-done-dialog/activty-done-dialog.component';
+
 
 @Component({
   selector: 'st-random-activity',
@@ -50,7 +55,8 @@ export class RandomActivityView implements OnInit, OnDestroy {
     private store: Store < AppState >,
     public ts: TimerService,
     private ra: RunningActivityService,
-    private activityService: ActivityService
+    private activityService: ActivityService,
+    private dialog: MatDialog
   ) {}
   activities$: Observable < Activity[] > ;
   subscribtions: Subscription[] = [];
@@ -138,8 +144,30 @@ export class RandomActivityView implements OnInit, OnDestroy {
   }
 
   format(time: number) {
-    console.log('foramt', time);
     return Formatter.formatTimeNumber(time);
+  }
+
+  activityDone() {
+    this.openActivityDoneDialog();
+  }
+
+  public openActivityDoneDialog() {
+    console.log('mins', this.ts.mins);
+    const dialogRef = this.dialog.open(ActivtyDoneDialogComponent, {
+      data: {
+        activity: this.currentActivity,
+        time: this.ts.secs + this.ts.mins * 60 + this.ts.hours * 60 * 60 + this.ts.days * 60 * 60 * 24
+      }
+    });
+
+    const subsriber = dialogRef.afterClosed().subscribe((history: ActivityHistoryItem) => {
+      if (history) {
+        this.store.dispatch(new AddActivityHistory(history));
+        this.clearTimer();
+        this.getNextActivity();
+        subsriber.unsubscribe();
+      }
+    });
   }
 
 }
