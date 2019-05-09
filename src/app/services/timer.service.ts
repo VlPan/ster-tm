@@ -50,6 +50,7 @@ export class TimerService {
 
   clearTimer() {
     this.resetTimer();
+    this.running = false;
     clearInterval(this.timerRef);
   }
 

@@ -74,7 +74,7 @@ export class RandomActivityView implements OnInit, OnDestroy {
 
 
   ngOnInit() {
-    this.store.dispatch(new LoadActivities());
+
     this.activities$ = this.store.select(getActivities);
     const activitiesLoadedSubscription = this.activities$.subscribe(activities => {
       this.pryoritizedActivities = this.activityService.pryoritizeActivities(activities);
@@ -82,7 +82,9 @@ export class RandomActivityView implements OnInit, OnDestroy {
 
     const activitiesLoadedFirstSubscription = this.activities$.pipe(filter((a => a.length > 0)), take(1)).subscribe(activities => {
       this.pryoritizedActivities = this.activityService.pryoritizeActivities(activities);
-      this.getRandomActivity();
+      if (!this.currentActivity) {
+        this.getRandomActivity();
+      }
     });
 
     this.subscribtions.push(activitiesLoadedSubscription, activitiesLoadedFirstSubscription);
@@ -90,10 +92,11 @@ export class RandomActivityView implements OnInit, OnDestroy {
 
   getRandomActivity() {
     this.currentActivity = this.activityService.getRandomActivity(this.pryoritizedActivities);
-    console.log(this.currentActivity);
+    this.clearTimer();
   }
 
   getPrevActivity() {
+    this.clearTimer();
     this.ra.getPrevActivity();
   }
 
@@ -106,6 +109,7 @@ export class RandomActivityView implements OnInit, OnDestroy {
   }
   getNextActivity() {
     if (this.ra.hasNext()) {
+      this.clearTimer();
       this.ra.getNextActivity();
     } else {
       this.getRandomActivity();
@@ -152,7 +156,6 @@ export class RandomActivityView implements OnInit, OnDestroy {
   }
 
   public openActivityDoneDialog() {
-    console.log('mins', this.ts.mins);
     const dialogRef = this.dialog.open(ActivtyDoneDialogComponent, {
       data: {
         activity: this.currentActivity,

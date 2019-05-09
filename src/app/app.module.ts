@@ -1,3 +1,5 @@
+import { HistoryItemComponent } from './../components/history-item/history-item.component';
+import { HistoryView } from './../views/history/history.view';
 import { DeleteActivityDialogComponent } from './../components/delete-dialog/delete-dialog';
 import { AddActivityDialogComponent } from './../components/add-activity-dialog/add-activity-dialog.component';
 import { CardComponent } from './../components/card/card.component';
@@ -49,7 +51,9 @@ export const metaReducers: MetaReducer<any>[] = !environment.production
     DeleteActivityDialogComponent,
     UpdateActivityDialogComponent,
     RandomActivityView,
-    ActivtyDoneDialogComponent
+    ActivtyDoneDialogComponent,
+    HistoryView,
+    HistoryItemComponent
   ],
   imports: [
     BrowserModule,

@@ -4,8 +4,9 @@
 
     <div class="activity-done-dialog__option" *ngFor="let option of data.activity.userOptions; index as i">
       <div class="activity-done-dialog__option-name">{{option.name}}</div>
-      <div class="activity-done-dialog__option-slider">
+      <div>
         <mat-slider
+        class="activity-done-dialog__option-slider"
         thumbLabel
         value="optionsToSave[i].value"
         min="option.min"

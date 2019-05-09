@@ -37,7 +37,6 @@ export const initialState: ActivityHistoryState = {
 
 
 export function activityHistoryReducer(state: ActivityHistoryState = initialState, action: ActivityHistoryAction): ActivityHistoryState {
-  console.log(action.type);
   switch (action.type) {
     case LOAD_ACTIVITY_HISTORY:
       return {
@@ -83,7 +82,6 @@ export function activityHistoryReducer(state: ActivityHistoryState = initialStat
       };
 
     case DELETE_ACTIVITY_HISTORY_SUCCESS:
-      console.log('REDUCER');
       return {
         ...state,
         deleteActivityHistoryStatus: DeleteActivityHistoryStatus.SUCCESS

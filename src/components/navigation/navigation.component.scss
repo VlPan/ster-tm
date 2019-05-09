@@ -47,11 +47,16 @@
     cursor: pointer;
     flex-direction: row;
     transition: all .3s;
+
+    &--active {
+      background: $primary;
+    }
   }
 
   .menu-item:hover {
     background: $accent-dark-2;
   }
+
 
   .menu__icon {
     width: 30px;
@@ -118,20 +123,17 @@
   box-shadow: 10px 13px 24px -6px rgba(0,0,0,0.3);
 }
 
-#c {
-  display: none
-}
-#c:checked ~ .menu-icon::after {
+.menu-icon--active::after {
   top: 0;
   animation: fadeOut 0s .3s both;
 }
 
-#c:checked ~ .menu-icon::before {
+.menu-icon--active::before {
   top: 0;
   animation: rotate-2 .4s .3s both;
 }
 
-#c:checked ~ .menu-icon {
+.menu-icon--active {
   transform: scale(1);
   animation: rotate-1 .4s .3s both;
 }

@@ -1,8 +1,7 @@
 <nav class="st-nav">
   <div class="st-nav__panel">
-      <input type="checkbox" id="c">
-      <label for="c" class="wrapper" (click)="toggleMenu()"></label>
-      <div class="menu-icon"></div>
+      <label for="c" class="wrapper" (click)="toggleMenu()" ></label>
+      <div class="menu-icon" [ngClass]="{'menu-icon--active': menuToggled}"></div>
   </div>
 
   <div class="st-nav__content" [ngClass]="{'st-nav__content--active': menuToggled}">
@@ -11,7 +10,7 @@
             *ngFor="let link of links"
             routerLink="{{link.value}}"
             [routerLinkActiveOptions]="{ exact: true }"
-            routerLinkActive="app-navigation__link--active"
+            routerLinkActive="menu-item--active"
             (click)="toggleMenu()"
            >
               <i [class]="link.icon"></i>

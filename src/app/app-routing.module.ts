@@ -3,22 +3,15 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ActivitiesView } from 'src/views/activities/activities.view';
+import { HistoryView } from 'src/views/history/history.view';
 
 const routes: Routes = [
   { path: 'activities', component: ActivitiesView },
+  { path: 'history', component: HistoryView },
   { path: '',
     component: RandomActivityView,
     pathMatch: 'full'
-  },
-  // { path: '',
-  //   component: RandomizePageComponent,
-  //   pathMatch: 'full'
-  // },
-  // {
-  //   path: 'history',
-  //   component: HistoryComponent,
-  // },
-  // { path: '**', component: PageNotFoundView }
+  }
 ];
 
 @NgModule({

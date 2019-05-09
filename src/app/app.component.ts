@@ -13,7 +13,7 @@ import { Link } from './store/models/navigation-config';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   activities$: Observable<Activity[]>;
   constructor(private store: Store<ActivitiesState>) {}
 
@@ -21,6 +21,7 @@ export class AppComponent {
     {
       name: 'Random',
       value: '/',
+      icon: 'fa fa-random menu__icon'
 
     },
     {
@@ -30,7 +31,8 @@ export class AppComponent {
     },
     {
       name: 'Activities History',
-      value: '/history'
+      value: '/history',
+      icon: 'fa fa-history menu__icon'
     },
   ];
 
@@ -40,5 +42,9 @@ export class AppComponent {
 
   public deleteActivityHistory(activity: Activity) {
     this.store.dispatch(new DeleteActivityHistory(activity.id));
+  }
+
+  ngOnInit() {
+    this.store.dispatch(new LoadActivities());
   }
 }

@@ -102,7 +102,6 @@ export class ActivityHistoryEffects {
         await this.activityHistory.deleteActivityHistoryByActivityId(activityId);
       })
         .pipe(
-          tap(res => console.log('RESUULT', res)),
           takeUntil(
             this.actions$.pipe(ofType(PAGE_DESTROYED))
           ),

@@ -25,11 +25,9 @@ constructor(private db: AngularFirestore) {}
       });
 
       const collectionSize = await this.getCollectionSize(collection);
-      console.log(collectionSize);
 
       return this.deleteCollection(collection, collectionSize);
     } catch (err) {
-      console.log('err', err);
       throw err;
     }
 

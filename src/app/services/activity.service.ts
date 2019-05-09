@@ -20,7 +20,6 @@ constructor(private db: AngularFirestore) {}
   }
 
   deleteActivity(id: string) {
-    console.log(of(this.db.collection('activities').doc(id)));
     return  of(this.db.collection('activities').doc(id).delete());
   }
 
