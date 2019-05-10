@@ -18,7 +18,6 @@ export class HistoryView implements OnInit {
   activityHistory$: Observable< ActivityHistoryItem[] >;
 
   ngOnInit() {
-    this.store.dispatch(new LoadActivityHistory());
     this.activityHistory$ = this.store.select(getActivityHistory);
   }
 

@@ -1,4 +1,4 @@
-import { AddActivityHistory, DeleteActivityHistory } from './store/actions/activity-history.actions';
+import { AddActivityHistory, DeleteActivityHistory, LoadActivityHistory } from './store/actions/activity-history.actions';
 import { LoadActivities, AddActivity, PageDestroyed, DeleteActivity, UpdateActivity } from './store/actions/activities.actions';
 import { ActivitiesState, Activity } from './store/models/activity.model';
 import { Component, OnInit, OnDestroy } from '@angular/core';
@@ -46,5 +46,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.store.dispatch(new LoadActivities());
+    this.store.dispatch(new LoadActivityHistory());
   }
 }

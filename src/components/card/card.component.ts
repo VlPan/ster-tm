@@ -99,6 +99,7 @@ export class CardComponent implements AfterViewInit {
 
     const subsriber = dialogRef.afterClosed().subscribe(updatedActivty => {
       if (updatedActivty) {
+        console.log(updatedActivty);
         this.updateCard(updatedActivty);
         subsriber.unsubscribe();
       }

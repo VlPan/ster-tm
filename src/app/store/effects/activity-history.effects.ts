@@ -60,9 +60,6 @@ export class ActivityHistoryEffects {
       return this.activityHistory
         .getHistory()
         .pipe(
-          takeUntil(
-            this.actions$.pipe(ofType(PAGE_DESTROYED))
-          ),
           map((activities: DocumentChangeAction < {} > []) => {
               const mapped = activities.map(a => ({
                 id: a.payload.doc.id,

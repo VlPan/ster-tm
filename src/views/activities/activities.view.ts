@@ -33,6 +33,7 @@ export class ActivitiesView implements OnInit, OnDestroy {
   }
 
   public updateActivity(arg: {id: string, value: Activity}) {
+    console.log('ARG', arg);
     const {id, value} = arg;
     this.store.dispatch(new UpdateActivity({id, value}));
   }

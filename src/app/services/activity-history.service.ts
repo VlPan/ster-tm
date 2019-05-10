@@ -34,6 +34,7 @@ constructor(private db: AngularFirestore) {}
   }
 
   updateActivityHistory(paylaod: {id: string, value: ActivityHistoryItem}) {
+    console.log('updateActivityHistory from service');
     const { id, value } = paylaod;
     return of(this.db.collection('activityHistory').doc(id).set(value));
   }
