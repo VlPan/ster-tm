@@ -35,7 +35,6 @@ export class HistoryItemComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
 
-    console.log(this.historyItem);
     const cahrtRef = new Chart(this.chartEl.nativeElement, {
       type: 'bar',
       data: {

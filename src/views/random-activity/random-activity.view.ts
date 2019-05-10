@@ -61,6 +61,7 @@ export class RandomActivityView implements OnInit, OnDestroy {
   activities$: Observable < Activity[] > ;
   subscribtions: Subscription[] = [];
   pryoritizedActivities: Activity[] = [];
+  activityStartedTimerFirst = true;
 
   @ViewChild('circle') circleEl: ElementRef;
 
@@ -110,14 +111,21 @@ export class RandomActivityView implements OnInit, OnDestroy {
   getNextActivity() {
     if (this.ra.hasNext()) {
       this.clearTimer();
+      this.activityStartedTimerFirst = true;
       this.ra.getNextActivity();
     } else {
+      this.clearTimer();
+      this.activityStartedTimerFirst = true;
       this.getRandomActivity();
     }
   }
 
   toggleTimer() {
     if (!this.ts.running) {
+      if (this.activityStartedTimerFirst) {
+        this.ts.setStartTime();
+        this.activityStartedTimerFirst = false;
+      }
       this.startTimer();
     } else {
       this.pauseTimer();

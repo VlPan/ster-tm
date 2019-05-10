@@ -17,11 +17,9 @@ export class RunningActivityService {
       this.activitiesRunningHistory.push(this.currentActivity);
       this.index += 1;
     }
-    console.log(this.index, this.activitiesRunningHistory);
   }
 
   getCurrentActivity(): Activity {
-    console.log('curretn activity', this.currentActivity);
     return this.currentActivity;
   }
 
@@ -34,7 +32,6 @@ export class RunningActivityService {
     if (this.index > 0) {
       this.index -= 1;
       this.currentActivity = this.activitiesRunningHistory[this.index];
-      console.log(this.index, this.activitiesRunningHistory);
     }
   }
 
@@ -50,7 +47,6 @@ export class RunningActivityService {
     if (this.hasNext()) {
       this.index += 1;
       this.currentActivity = this.activitiesRunningHistory[this.index];
-      console.log(this.index, this.activitiesRunningHistory);
     }
   }
 

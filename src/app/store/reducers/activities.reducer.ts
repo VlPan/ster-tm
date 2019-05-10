@@ -31,7 +31,6 @@ export const initialState: ActivitiesState = {
 export const getActivitiesRootState = (state: ActivitiesState) => state;
 
 export function activitiesReducer(state: ActivitiesState = initialState, action: ActivitiesAction): ActivitiesState {
-  console.log(action.type);
   switch (action.type) {
     case LOAD_ACTIVITIES:
       return {
