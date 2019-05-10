@@ -47,7 +47,7 @@ export function activityHistoryReducer(state: ActivityHistoryState = initialStat
     case LOAD_ACTIVITY_HISTORY_SUCCESS:
       return {
         ...state,
-        activityHistory: [...action.payload],
+        activityHistory: [...action.payload].reverse(),
         loadActivityHistoryStatus: LoadActivityHistoryStatus.SUCCESS
       };
 

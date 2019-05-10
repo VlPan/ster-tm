@@ -41,7 +41,7 @@ export function activitiesReducer(state: ActivitiesState = initialState, action:
     case LOAD_ACTIVITIES_SUCCESS:
       return {
         ...state,
-        activities: [...action.payload],
+        activities: [...action.payload].reverse(),
         loadActivitiesStatus: LoadActivitiesStatus.SUCCESS
       };
 
