@@ -49,24 +49,7 @@ export class TimerService {
       this.timerRef = setInterval(() => {
         this.secs += 1;
         this.updateTimerIfSleep();
-
         this.perc.next(this.perc.value - (this.percm / 60 / this.mmin));
-        if (this.secs % 60 === 0) {
-          this.mins += 1;
-          if ((this.mins >= this.mmin)) {
-            this.perc.next(612);
-          }
-          this.secs = 0;
-          if (this.mins % 60 === 0) {
-            this.mins = 0;
-            this.hours += 1;
-
-            if (this.hours % 24 === 0) {
-              this.days += 1;
-              this.hours = 0;
-            }
-          }
-        }
       }, 1000);
     } else {
       this.startText = 'Resume';
@@ -99,7 +82,7 @@ export class TimerService {
   }
 
   updateTimerIfSleep() {
-    if (this.secs % 5 === 0) {
+    if (this.secs % 1 === 0) {
       const realPassedTime = Date.now() - this.staringTime - this.pauseTime;
       console.log(realPassedTime);
 
@@ -115,6 +98,10 @@ export class TimerService {
       this.mins = rmins;
       this.hours = rhours;
       this.days = rdays;
+
+      if ((this.mins >= this.mmin)) {
+        this.perc.next(612);
+      }
 
       console.log(rsecs, rmins, rhours, rdays);
     }
