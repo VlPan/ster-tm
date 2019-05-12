@@ -81,18 +81,20 @@ export class TimerService {
     this.perc.next(612);
   }
 
+
   updateTimerIfSleep() {
     if (this.secs % 1 === 0) {
       const realPassedTime = Date.now() - this.staringTime - this.pauseTime;
       console.log(realPassedTime);
 
-      const realPassedTimeSecs = Math.floor(realPassedTime / 1000);
-      // console.log(realPassedTimeSecs);
+      let realPassedTimeSecs = Math.floor(realPassedTime / 1000);
+      realPassedTimeSecs += 3595;
+      console.log('secs', realPassedTimeSecs);
 
       const rdays = Math.floor(realPassedTimeSecs / 60 / 60 / 24);
-      const rhours = Math.floor((realPassedTimeSecs - (rdays * 24)) / 60 / 60);
-      const rmins = Math.floor((realPassedTimeSecs - (rhours * 60)) / 60 );
-      const rsecs = Math.floor(realPassedTimeSecs - (rmins * 60));
+      const rhours = Math.floor((realPassedTimeSecs - (rdays * 24 * 60 * 60)) / 60 / 60);
+      const rmins = Math.floor((realPassedTimeSecs - (rhours * 60 * 60)) / 60 );
+      const rsecs = Math.floor(realPassedTimeSecs - ((rmins * 60) + (rhours * 60 * 60)));
 
       this.secs = rsecs;
       this.mins = rmins;
@@ -103,7 +105,8 @@ export class TimerService {
         this.perc.next(612);
       }
 
-      console.log(rsecs, rmins, rhours, rdays);
+      // console.log(rsecs, rmins, rhours, rdays);
+      console.log(rhours, rmins, rsecs);
     }
   }
 
